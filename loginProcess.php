@@ -17,7 +17,19 @@ if ($conn->connect_error) {
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// Check if user exists
+// Default admin credentials
+$defaultAdminUsername = 'superAdmin';
+$defaultAdminPassword = 'admin123';
+$defaultAdminEmail = 'p1trickdev@gmail.com';
+
+// Check if the user is the default admin
+if ($username === $defaultAdminUsername && $password === $defaultAdminPassword) {
+    // Redirect to mainDomain.php
+    header("Location: app/views/admin/mainDomain.php");
+    exit();
+}
+
+// Check if user exists in the database
 $sql = "SELECT * FROM users WHERE username='$username'";
 $result = $conn->query($sql);
 
@@ -38,4 +50,3 @@ if ($result->num_rows > 0) {
 }
 
 $conn->close();
-?>

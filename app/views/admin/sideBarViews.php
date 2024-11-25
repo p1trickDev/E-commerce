@@ -12,7 +12,7 @@
 <body>
     <div class="sidebar">
         <div class="logo">
-            <img src="/E-commerce/assets/images/LOGO.jpg" alt="YarnCraft Emporium Logo">
+            <img src="/YARNCRAFT/assets/images/LOGO.jpg" alt="YarnCraft Emporium Logo">
         </div>
         <a href="yarnCraft/app/views/admin/dashboard.php">Dashboard</a>
         <a href="yarnCraft/app/views/admin/inventory.php">Inventory</a>

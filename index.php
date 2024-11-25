@@ -7,7 +7,7 @@
     <title>YarnCraft Emporium</title>
 
     <link rel="stylesheet" href="/YARNCRAFT/assets/styles/navBarStyles.css">
-    <link rel="stylesheet" href="/YARNCRAFT/assets/styles/productCardStyles.css">
+    <!-- <link rel="stylesheet" href="/YARNCRAFT/assets/styles/productCardStyles.css"> -->
 </head>
 
 <body>
@@ -26,7 +26,9 @@
 </body>
 
 <footer>
-    <?php include 'app/views/public/footerViews.php'; ?>
+    <!-- <?php include 'app/views/public/footerViews.php'; ?> -->
 </footer>
+
+<?php include '/YARNCRAFT/core/routes.php'; ?>
 
 </html>

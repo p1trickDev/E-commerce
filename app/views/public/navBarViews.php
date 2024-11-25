@@ -29,7 +29,7 @@
                 $menuItems = [
                     'home.php' => 'Home',
                     'products.php' => 'Products',
-                    'contact.php' => 'Contact',
+                    '/yarnCraft/app/views/public/contactViews.php' => 'Contact',
                     'services.php' => 'Limited Sales',
                     'about.php' => 'About'
                 ];

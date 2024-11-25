@@ -1,0 +1,42 @@
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-content p {
+  margin: 0.5rem 0;
+}
+
+.footer-content .socials {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 1rem;
+}
+
+.footer-content .socials li {
+  display: inline;
+}
+
+.footer-content .socials li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.5rem;
+}
+
+.footer-bottom {
+  margin-top: 1rem;
+}
+
+.footer-bottom a {
+  color: #ffd426;
+  text-decoration: none;
+}

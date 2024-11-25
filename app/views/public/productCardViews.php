@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Card</title>
-    <link rel="stylesheet" href="/E-commerce/assets/styles/productCardStyles.css">
+    <link rel="stylesheet" href="/YARNCRAFT/assets/styles/productCardStyles.css">
 </head>
 
 <body>
