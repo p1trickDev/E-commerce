@@ -2,14 +2,14 @@
 
 require 'vendor/autoload.php';
 
-use App\Controllers\contactController;
+use App\Controllers\Public\ContactController;
 
 // Ensure the ContactController class is defined and autoloaded correctly
-if (!class_exists(contactController::class)) {
+if (!class_exists(ContactController::class)) {
     die('ContactController class not found. Please check the namespace or autoload configuration.');
 }
 
-$contactController = new contactController();
+$contactController = new ContactController();
 
 $requestUri = $_SERVER['REQUEST_URI'];
 $requestMethod = $_SERVER['REQUEST_METHOD'];

@@ -1,52 +1,23 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default XAMPP password
-$dbname = "yarncraft";
+// loginProcess.php
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+require __DIR__ . '/app/models/User.php';
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Get form data
 $username = $_POST['username'];
 $password = $_POST['password'];
 
-// Default admin credentials
-$defaultAdminUsername = 'superAdmin';
-$defaultAdminPassword = 'admin123';
-$defaultAdminEmail = 'p1trickdev@gmail.com';
-
-// Check if the user is the default admin
-if ($username === $defaultAdminUsername && $password === $defaultAdminPassword) {
-    // Redirect to mainDomain.php
-    header("Location: app/views/admin/mainDomain.php");
-    exit();
-}
-
-// Check if user exists in the database
-$sql = "SELECT * FROM users WHERE username='$username'";
-$result = $conn->query($sql);
+$userModel = new User();
+$result = $userModel->getUserByUsername($username);
 
 if ($result->num_rows > 0) {
-    // User exists, verify password
     $row = $result->fetch_assoc();
     if (password_verify($password, $row['password'])) {
-        // Password is correct, redirect to index.php
         header("Location: index.php");
         exit();
     } else {
-        // Password is incorrect
         echo "Invalid username or password";
     }
 } else {
-    // User does not exist
     echo "Invalid username or password";
 }
 
-$conn->close();

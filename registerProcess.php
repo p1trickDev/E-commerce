@@ -1,40 +1,22 @@
 <?php
-// Database connection
-$servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = ""; // Default XAMPP password
-$dbname = "yarncraft";
+// app/controllers/UserController.php
+require_once __DIR__ . '/../models/User.php';
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+class UserController
+{
+    public function register()
+    {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        $address = $_POST['address'];
 
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Get form data
-$username = $_POST['username'];
-$password = $_POST['password'];
-
-// Check if user exists
-$sql = "SELECT * FROM users WHERE username='$username'";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // User exists, verify password
-    $row = $result->fetch_assoc();
-    if (password_verify($password, $row['password'])) {
-        // Password is correct, redirect to index.php
-        header("Location: index.php");
-        exit();
-    } else {
-        // Password is incorrect
-        echo "Invalid username or password";
+        $userModel = new User();
+        if ($userModel->createUser($username, $email, $password, $address)) {
+            header("Location: /login");
+            exit();
+        } else {
+            echo "Error: " . $userModel->getError();
+        }
     }
-} else {
-    // User does not exist
-    echo "Invalid username or password";
 }
-
-$conn->close();

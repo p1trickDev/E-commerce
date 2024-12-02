@@ -1,10 +1,12 @@
 <?php
+// app/controllers/ContactController.php
 
-namespace App\Controllers;
+namespace App\Controllers\Public;
 
-use App\Models\Mailer;
+use App\Controllers\BaseController;
 
-class ContactController
+
+class ContactController extends BaseController
 {
     public function showForm()
     {
@@ -18,16 +20,15 @@ class ContactController
             $email = $_POST['email'];
             $message = $_POST['message'];
 
-            $mailer = new Mailer();
             $subject = "Contact Form Submission";
             $body = "Name: $name<br>Email: $email<br>Message: $message";
 
-            $result = $mailer->sendMail('recipient@example.com', $subject, $body);
-
-            if ($result === true) {
+            // Use the connection from the base controller
+            $sql = "INSERT INTO contact_messages (name, email, message) VALUES ('$name', '$email', '$message')";
+            if ($this->conn->query($sql) === TRUE) {
                 echo 'Message has been sent';
             } else {
-                echo $result;
+                echo 'Error: ' . $this->conn->error;
             }
         }
     }
